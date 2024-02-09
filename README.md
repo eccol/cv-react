@@ -1,1 +1,1 @@
-# cv-react
+A CV page using React.
