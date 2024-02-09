@@ -7,37 +7,36 @@ export default function Info({ editMode }) {
     setInfo({ ...info, [field]: value });
   }
 
+  const fields = [
+    { fieldName: 'firstname', title: 'First Name' },
+    { fieldName: 'lastname', title: 'Last Name' },
+  ];
+
+  const fieldForms = fields.map(({ fieldName, title }) => {
+    return (
+      <div className="form-item" key={fieldName}>
+        <label htmlFor={fieldName}>{title}</label>
+        {editMode ? (
+          <input
+            type="text"
+            name={fieldName}
+            id={fieldName}
+            value={info[fieldName]}
+            onInput={(e) => {
+              updateInfo(e.target.name, e.target.value);
+            }}
+          ></input>
+        ) : (
+          <p>{info[fieldName]}</p>
+        )}
+      </div>
+    );
+  });
+
   return (
     <div className="info">
       <h1>Info</h1>
-      <label htmlFor="firstname">First Name</label>
-      {editMode ? (
-        <input
-          type="text"
-          name="firstname"
-          id="firstname"
-          value={info.firstname}
-          onInput={(e) => {
-            updateInfo(e.target.name, e.target.value);
-          }}
-        />
-      ) : (
-        <p>{info.firstname}</p>
-      )}
-      <label htmlFor="lastname">Last Name</label>
-      {editMode ? (
-        <input
-          type="text"
-          name="lastname"
-          id="lastname"
-          value={info.lastname}
-          onInput={(e) => {
-            updateInfo(e.target.name, e.target.value);
-          }}
-        />
-      ) : (
-        <p>{info.lastname}</p>
-      )}
+      {fieldForms}
     </div>
   );
 }
