@@ -1,15 +1,10 @@
 import { useState } from 'react';
 
 export default function Info({ editMode }) {
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
+  const [info, setInfo] = useState({ firstname: '', lastname: '' });
 
-  function changeFirstName(e) {
-    setFirstName(e.target.value);
-  }
-
-  function changeLastName(e) {
-    setLastName(e.target.value);
+  function updateInfo(field, value) {
+    setInfo({ ...info, [field]: value });
   }
 
   return (
@@ -21,10 +16,13 @@ export default function Info({ editMode }) {
           type="text"
           name="firstname"
           id="firstname"
-          onInput={changeFirstName}
+          value={info.firstname}
+          onInput={(e) => {
+            updateInfo(e.target.name, e.target.value);
+          }}
         />
       ) : (
-        <p>{firstName}</p>
+        <p>{info.firstname}</p>
       )}
       <label htmlFor="lastname">Last Name</label>
       {editMode ? (
@@ -32,10 +30,13 @@ export default function Info({ editMode }) {
           type="text"
           name="lastname"
           id="lastname"
-          onInput={changeLastName}
+          value={info.lastname}
+          onInput={(e) => {
+            updateInfo(e.target.name, e.target.value);
+          }}
         />
       ) : (
-        <p>{lastName}</p>
+        <p>{info.lastname}</p>
       )}
     </div>
   );
