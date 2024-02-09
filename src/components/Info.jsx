@@ -1,24 +1,34 @@
 import { useState } from 'react';
+import '../styles/Info.css';
 
 export default function Info({ editMode }) {
-  const [info, setInfo] = useState({ firstname: '', lastname: '' });
+  const fields = [
+    { fieldName: 'firstname', title: 'First Name', type: 'text' },
+    { fieldName: 'lastname', title: 'Last Name', type: 'text' },
+    { fieldName: 'email', title: 'Email Address', type: 'email' },
+    { fieldName: 'telephone', title: 'Phone Number', type: 'tel' },
+  ];
+
+  // Initialize every field as an empty string to
+  // prevent React's controlled/uncontrolled error
+  const [info, setInfo] = useState(
+    fields.reduce((defaultObject, field) => {
+      defaultObject[field.fieldName] = '';
+      return defaultObject;
+    }, {}),
+  );
 
   function updateInfo(field, value) {
     setInfo({ ...info, [field]: value });
   }
 
-  const fields = [
-    { fieldName: 'firstname', title: 'First Name' },
-    { fieldName: 'lastname', title: 'Last Name' },
-  ];
-
-  const fieldForms = fields.map(({ fieldName, title }) => {
+  const fieldForms = fields.map(({ fieldName, title, type }) => {
     return (
       <div className="form-item" key={fieldName}>
         <label htmlFor={fieldName}>{title}</label>
         {editMode ? (
           <input
-            type="text"
+            type={type}
             name={fieldName}
             id={fieldName}
             value={info[fieldName]}
