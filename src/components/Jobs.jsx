@@ -40,7 +40,7 @@ export default function Jobs({ editMode }) {
             onInput={(e) => updateJob(job.id, 'title', e.target.value)}
           />
         ) : (
-          <p>{job.name}</p>
+          <p>{job.title}</p>
         )}
         <label htmlFor="employer">Employer</label>
         {editMode ? (
