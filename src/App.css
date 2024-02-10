@@ -15,3 +15,10 @@ label {
   top: 5px;
   right: 5px;
 }
+
+.job,
+.school {
+  border: 1px solid gray;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
