@@ -45,7 +45,7 @@ export default function Info({ editMode }) {
 
   return (
     <div className="info">
-      <h1>Info</h1>
+      <h2>Info</h2>
       {fieldForms}
     </div>
   );

@@ -75,7 +75,7 @@ export default function Schools({ editMode }) {
 
   return (
     <div className="education">
-      <h1>Education</h1>
+      <h2>Education</h2>
       {schoolList}
       {editMode ? (
         <button type="button" onClick={addSchool}>
