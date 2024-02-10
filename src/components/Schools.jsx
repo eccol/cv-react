@@ -6,7 +6,12 @@ export default function Schools({ editMode }) {
 
   function addSchool() {
     const id = uuid();
-    const newSchool = { name: 'School University', id: id };
+    const newSchool = {
+      name: 'School University',
+      years: '2010-2015',
+      major: 'Dance',
+      id: id,
+    };
     setSchools([...schools, newSchool]);
   }
 
@@ -36,6 +41,28 @@ export default function Schools({ editMode }) {
           />
         ) : (
           <p>{school.name}</p>
+        )}
+        <label htmlFor="years">Years Attended</label>
+        {editMode ? (
+          <input
+            id="years-attended"
+            name="years"
+            value={school.years}
+            onInput={(e) => updateSchool(school.id, 'years', e.target.value)}
+          />
+        ) : (
+          <p>{school.years}</p>
+        )}
+        <label htmlFor="major">Area of Study</label>
+        {editMode ? (
+          <input
+            id="major"
+            name="major"
+            value={school.major}
+            onInput={(e) => updateSchool(school.id, 'major', e.target.value)}
+          />
+        ) : (
+          <p>{school.major}</p>
         )}
         {editMode ? (
           <button type="button" onClick={() => removeSchool(school.id)}>
