@@ -14,7 +14,7 @@ function App() {
 
   return (
     <>
-      <button type="button" onClick={toggleEdit}>
+      <button type="button" id="edit-button" onClick={toggleEdit}>
         {editMode ? 'Save' : 'Edit'}
       </button>
       <Info editMode={editMode} />

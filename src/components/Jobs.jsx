@@ -75,7 +75,7 @@ export default function Jobs({ editMode }) {
 
   return (
     <div className="work-experience">
-      <h1>Work Experience</h1>
+      <h2>Work Experience</h2>
       {jobList}
       {editMode ? (
         <button type="button" onClick={addJob}>
