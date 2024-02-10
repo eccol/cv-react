@@ -4,7 +4,7 @@ import './App.css';
 import Info from './components/Info.jsx';
 
 function App() {
-  const [editMode, setEditMode] = useState(false);
+  const [editMode, setEditMode] = useState(true);
 
   function toggleEdit() {
     setEditMode(!editMode);
